@@ -1,0 +1,23 @@
+.label {
+    display: inline-block;
+    font-size: 0.8em;
+    width: fit-content;
+    margin: 10px;
+    padding: 6px 12px;
+    border-radius: 20px;
+
+    &.ribbon {
+        margin: 20px;
+        transform: rotate(20deg);
+    }
+}
+
+@media (max-width: 800px) {
+    .label {
+        margin: 5px;
+
+        &.ribbon {
+            margin: 10px;
+        }
+    }
+}

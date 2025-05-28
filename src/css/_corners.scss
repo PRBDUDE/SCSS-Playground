@@ -1,0 +1,15 @@
+$radius: 5px !default;
+
+@mixin rounded {
+    border-radius: $radius;
+}
+
+@mixin rounded-top {
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
+}
+
+@mixin rounded-bottom {
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+}

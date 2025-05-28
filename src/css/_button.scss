@@ -1,0 +1,143 @@
+@use "corners";
+@use "color";
+
+$button-min-width: 130px;
+$button-letter-spacing: 0.02rem;
+$button-margin: 5px;
+$button-base-padding: 5px;
+$button-pill-border-radius: 20px;
+
+@mixin base-button($background-color: color.$primary-color,
+                   $border-color: color.$primary-color,
+                   $hover-border-color: color.$primary-color) {
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    color: color.$button-text-color;
+    letter-spacing: $button-letter-spacing;
+    min-width: $button-min-width;
+    margin: $button-margin;
+    @include corners.rounded;
+    padding: $button-base-padding + corners.$radius;
+    box-shadow: 0 0 10px 0 color.$button-shadow-color;
+    font-weight: bold;
+    &:hover {
+        @if $background-color != transparent {
+            background-color: rgba($background-color, 0.8);
+        }
+        cursor: pointer;
+        border: 1px solid $hover-border-color;
+    }
+    &:active {
+        box-shadow: 0 0 2px 0 color.$button-shadow-color;
+    }
+}
+
+.button-primary {
+    @include base-button();
+
+    &.pill {
+        border-radius: $button-pill-border-radius;
+    }
+}
+
+
+.small-button-primary {
+    @include base-button();
+    scale: 0.8;
+
+    &.pill {
+        border-radius: 20px;
+    }
+}
+
+.button-secondary {
+    @include base-button(color.$secondary-color, color.$secondary-color);
+
+    &.pill {
+        border-radius: $button-pill-border-radius;
+    }
+}
+
+.small-button-secondary {
+    @include base-button(color.$secondary-color, color.$secondary-color);
+    scale: 0.8;
+
+    &.pill {
+        border-radius: $button-pill-border-radius;
+    }
+}
+
+.button-tertiary {
+    @include base-button(transparent, transparent);
+
+    &.pill {
+        border-radius: $button-pill-border-radius;
+    }
+}
+
+.small-button-tertiary {
+    @include base-button(transparent, transparent);
+    scale: 0.8;
+
+    &.pill {
+        border-radius: $button-pill-border-radius;
+    }
+}
+
+.button-ok {
+    @include base-button(color.$success-background-color, color.$success-background-color);
+    color: color.$success-text-color;
+
+    &.pill {
+        border-radius: $button-pill-border-radius;
+    }
+}
+
+.small-button-ok {
+    @include base-button(color.$success-background-color, color.$success-background-color);
+    color: color.$success-text-color;
+    scale: 0.8;
+
+    &.pill {
+        border-radius: $button-pill-border-radius;
+    }
+}
+
+.button-cancel {
+    @include base-button(color.$other-background-color, color.$other-background-color);
+    color: color.$other-text-color;
+
+    &.pill {
+        border-radius: $button-pill-border-radius;
+    }
+}
+
+.small-button-cancel {
+    @include base-button(color.$other-background-color, color.$other-background-color);
+    color: color.$other-text-color;
+    scale: 0.8;
+
+    &.pill {
+        border-radius: $button-pill-border-radius;
+    }
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-gap: 15px;
+    place-items: center;
+}
+
+@media (max-width: 800px) {
+    .button-group {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

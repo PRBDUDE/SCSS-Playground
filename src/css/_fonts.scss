@@ -1,0 +1,14 @@
+@use "color";
+
+@mixin title-font($text-color: color.$header-color) {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: $text-color;
+}
+
+@mixin body-text-font($text-color: color.$body-text-color) {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    color: $text-color;
+}

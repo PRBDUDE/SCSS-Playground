@@ -1,0 +1,51 @@
+$header-color: #028690;
+$header-text-color: #f2f2f2;
+
+$body-text-color: #333;
+$site-background-color: #f5f5f5;
+
+$h2-start-color: #c3c3c3;
+$h2-text-color: #333;
+$h3-background-color: #4d5b6f;
+$h3-text-color: #f1f1f1;
+
+$primary-color: #6ca5e7;
+$secondary-color: #b0d5f7;
+$button-text-color: #000000;
+$button-shadow-color: #00000033;
+
+$success-background-color: #04AA6D;
+$success-text-color: white;
+$info-background-color: #2196F3;
+$info-text-color: white;
+$warning-background-color: #ff9800;
+$warning-text-color: white;
+$danger-background-color: #f44336;
+$danger-text-color: white;
+$other-background-color: #c7c7c7;
+$other-text-color: black;
+
+.success {
+    background-color: $success-background-color;
+    color: $success-text-color;
+}
+
+.info {
+    background-color: $info-background-color;
+    color: $info-text-color;
+}
+
+.warning {
+    background-color: $warning-background-color;
+    color: $warning-text-color;
+}
+
+.danger {
+    background-color: $danger-background-color;
+    color: $danger-text-color;
+}
+
+.other {
+    background-color: $other-background-color;
+    color: $other-text-color;
+}

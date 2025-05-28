@@ -1,0 +1,80 @@
+$slider-background-color-on: #2196F3 !default;
+$slider-background-color-off: #ccc !default;
+
+@mixin toggle($toggle-height: 32px) {
+    $_slider-diameter: calc(#{$toggle-height} - 8px);
+    $_slider-x-position: calc(#{$toggle-height} * 0.8125);
+
+    &-toggle {
+        position: relative;
+        display: inline-block;
+        width: calc(#{$toggle-height} * 1.875);
+        height: $toggle-height;
+        margin: 5px;
+
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $slider-background-color-off;
+            -webkit-transition: .4s;
+            transition: .4s;
+
+            &:before {
+                position: absolute;
+                content: "";
+                height: $_slider-diameter;
+                width: $_slider-diameter;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+        }
+
+        input {
+            &:checked + .slider {
+                background-color: $slider-background-color-on;
+            }
+
+            &:focus + .slider {
+                box-shadow: 0 0 1px $slider-background-color-on;
+            }
+
+            &:checked + .slider:before {
+                -ms-transform: translateX($_slider-x-position);
+                transform: translateX($_slider-x-position);
+            }
+        }
+
+        .slider.round {
+            border-radius: $toggle-height;
+
+            &:before {
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+.large {
+    @include toggle(32px);
+}
+
+.medium {
+    @include toggle(28px);
+}
+
+.small {
+    @include toggle(24px);
+}
