@@ -9,15 +9,17 @@ $button-pill-border-radius: 20px;
 
 @mixin base-button($background-color: color.$primary-color,
                    $border-color: color.$primary-color,
+                   $text-color: color.$button-text-color,
+                   $radius: corners.$radius,
                    $hover-border-color: color.$primary-color) {
     background-color: $background-color;
     border: 1px solid $border-color;
-    color: color.$button-text-color;
+    color: $text-color;
     letter-spacing: $button-letter-spacing;
     min-width: $button-min-width;
     margin: $button-margin;
-    @include corners.rounded;
-    padding: $button-base-padding + corners.$radius;
+    @include corners.rounded($radius);
+    padding: $button-base-padding + $radius;
     box-shadow: 0 0 10px 0 color.$button-shadow-color;
     font-weight: bold;
     &:hover {
@@ -30,95 +32,40 @@ $button-pill-border-radius: 20px;
     &:active {
         box-shadow: 0 0 2px 0 color.$button-shadow-color;
     }
-}
-
-.button-primary {
-    @include base-button();
 
     &.pill {
-        border-radius: $button-pill-border-radius;
+        @include corners.rounded($button-pill-border-radius);
     }
 }
 
+$button-list: (null, "primary"), ("small-", "primary"), ("medium-", "primary"),
+        (null, "secondary"), ("small-", "secondary"), ("medium-", "secondary"),
+        (null, "tertiary"), ("small-", "tertiary"), ("medium-", "tertiary"),
+        (null, "ok"), ("small-", "ok"), ("medium-", "ok"),
+        (null, "cancel"), ("small-", "cancel"), ("medium-", "cancel"),
+        (null, "stop"), ("small-", "stop"), ("medium-", "stop");
 
-.small-button-primary {
-    @include base-button();
-    scale: 0.8;
-
-    &.pill {
-        border-radius: 20px;
-    }
-}
-
-.button-secondary {
-    @include base-button(color.$secondary-color, color.$secondary-color);
-
-    &.pill {
-        border-radius: $button-pill-border-radius;
-    }
-}
-
-.small-button-secondary {
-    @include base-button(color.$secondary-color, color.$secondary-color);
-    scale: 0.8;
-
-    &.pill {
-        border-radius: $button-pill-border-radius;
-    }
-}
-
-.button-tertiary {
-    @include base-button(transparent, transparent);
-
-    &.pill {
-        border-radius: $button-pill-border-radius;
-    }
-}
-
-.small-button-tertiary {
-    @include base-button(transparent, transparent);
-    scale: 0.8;
-
-    &.pill {
-        border-radius: $button-pill-border-radius;
-    }
-}
-
-.button-ok {
-    @include base-button(color.$success-background-color, color.$success-background-color);
-    color: color.$success-text-color;
-
-    &.pill {
-        border-radius: $button-pill-border-radius;
-    }
-}
-
-.small-button-ok {
-    @include base-button(color.$success-background-color, color.$success-background-color);
-    color: color.$success-text-color;
-    scale: 0.8;
-
-    &.pill {
-        border-radius: $button-pill-border-radius;
-    }
-}
-
-.button-cancel {
-    @include base-button(color.$other-background-color, color.$other-background-color);
-    color: color.$other-text-color;
-
-    &.pill {
-        border-radius: $button-pill-border-radius;
-    }
-}
-
-.small-button-cancel {
-    @include base-button(color.$other-background-color, color.$other-background-color);
-    color: color.$other-text-color;
-    scale: 0.8;
-
-    &.pill {
-        border-radius: $button-pill-border-radius;
+@each $prefix, $name in $button-list {
+    .#{$prefix}button-#{$name} {
+        @if $name == "primary" {
+            @include base-button();
+        } @else if $name == "secondary" {
+            @include base-button(color.$secondary-color, color.$secondary-color);
+        } @else if $name == "tertiary" {
+            @include base-button(transparent, transparent);
+        } @else if $name == "ok" {
+            @include base-button(color.$success-background-color, color.$success-background-color, color.$success-text-color);
+        } @else if $name == "cancel" {
+            @include base-button(color.$other-background-color, color.$other-background-color, color.$other-text-color);
+        } @else if $name == "stop" {
+            @include base-button(color.$danger-background-color, color.$danger-background-color, color.$danger-text-color);
+        }
+        @if $prefix == "small-" {
+            scale: 0.7;
+        }
+        @if $prefix == "medium-" {
+            scale: 0.85;
+        }
     }
 }
 
