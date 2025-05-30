@@ -25,6 +25,19 @@ $danger-text-color: white;
 $other-background-color: #c7c7c7;
 $other-text-color: black;
 
+@mixin background-liner-gradient($color-start: null,
+                                 $color-end: null,
+                                 $degree: 90deg) {
+    @if $color-start == null {
+        @error "You must provide a color for the start of the gradient";
+    }
+    @if $color-end == null {
+        @error "You must provide a color for the end of the gradient";
+    }
+    background-image: -moz-linear-gradient($degree, $color-start 0%, $color-end 100%);
+    background-image: linear-gradient($degree, $color-start 0%, $color-end 100%);
+}
+
 .success {
     background-color: $success-background-color;
     color: $success-text-color;
