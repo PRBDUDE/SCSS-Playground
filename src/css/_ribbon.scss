@@ -1,5 +1,4 @@
 @use "color";
-@use "sass:color" as sass-color;
 
 .btn {
     border: none;
@@ -7,7 +6,7 @@
     padding: 12px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #444;
+    background-color: color.$ribbon-btn-background-color;
     color: white;
     position: relative;
 }
