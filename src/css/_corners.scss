@@ -1,15 +1,25 @@
 $radius: 5px !default;
 
-@mixin rounded {
-    border-radius: $radius;
+@mixin rounded($rad: $radius) {
+    border-radius: $rad;
 }
 
-@mixin rounded-top {
-    border-top-right-radius: $radius;
-    border-top-left-radius: $radius;
+@mixin rounded-top($rad: $radius) {
+    border-top-right-radius: $rad;
+    border-top-left-radius: $rad;
 }
 
-@mixin rounded-bottom {
-    border-bottom-right-radius: $radius;
-    border-bottom-left-radius: $radius;
+@mixin rounded-right($rad: $radius) {
+    border-top-right-radius: $rad;
+    border-bottom-right-radius: $rad;
+}
+
+@mixin rounded-bottom($rad: $radius) {
+    border-bottom-right-radius: $rad;
+    border-bottom-left-radius: $rad;
+}
+
+@mixin rounded-left($rad: $radius) {
+    border-top-left-radius: $rad;
+    border-bottom-left-radius: $rad;
 }
