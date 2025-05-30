@@ -1,9 +1,6 @@
 @use "corners";
 @use "fonts";
-
-$card-header-text-color: white;
-$card-header-background-color: #1f85aa;
-$card-body-background-color: white;
+@use "color";
 
 .card {
     width: calc(100% - 20px);
@@ -13,17 +10,17 @@ $card-body-background-color: white;
 
     .header {
         @include corners.rounded-top;
-        @include fonts.title-font($card-header-text-color);
+        @include fonts.title-font(color.$card-header-text-color);
         text-align: center;
         padding: 10px;
-        background-color: $card-header-background-color;
+        background-color: color.$card-header-background-color;
         text-shadow: 0 0 5px black;
     }
 
     .body {
         @include corners.rounded-bottom;
         @include fonts.body-text-font;
-        background-color: $card-body-background-color;
+        background-color: color.$card-body-background-color;
         padding: 10px;
     }
 }

@@ -15,15 +15,21 @@ $button-text-color: #000000;
 $button-shadow-color: #00000033;
 
 $success-background-color: #04AA6D;
-$success-text-color: white;
+$success-text-color: #ffffff;
 $info-background-color: #2196F3;
-$info-text-color: white;
+$info-text-color: #ffffff;
 $warning-background-color: #ff9800;
-$warning-text-color: white;
+$warning-text-color: #ffffff;
 $danger-background-color: #f44336;
-$danger-text-color: white;
+$danger-text-color: #ffffff;
 $other-background-color: #c7c7c7;
-$other-text-color: black;
+$other-text-color: #000000;
+
+$ribbon-btn-background-color: #444;
+
+$card-header-text-color: #ffffff;
+$card-header-background-color: #1f85aa;
+$card-body-background-color: #ffffff;
 
 @mixin background-liner-gradient($color-start: null,
                                  $color-end: null,
