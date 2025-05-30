@@ -1,6 +1,13 @@
 @use "color";
 @use "label";
+@use "corners";
 @use "ribbon";
+
+$base-container-max-width: 900px;
+$base-container-margin: 0 0 0 30px;
+
+$h2-max-width: calc($base-container-max-width - 150px);
+$h3-width: calc($base-container-max-width - 30px);
 
 :root {
     box-sizing: border-box;
@@ -29,12 +36,10 @@ header {
 
 h2 {
     padding: 8px 16px;
-    max-width: 700px;
+    max-width: $h2-max-width;
     color: color.$h2-text-color;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    background-image: -moz-linear-gradient(90deg, color.$h2-start-color 0%, color.$site-background-color 100%);
-    background-image: linear-gradient(90deg, color.$h2-start-color 0%, color.$site-background-color 100%);
+    @include corners.rounded-left(20px);
+    @include color.background-liner-gradient(color.$h2-start-color, color.$site-background-color);
     letter-spacing: 0.02rem;
     margin: 0 0 0 10px;
     margin-block-start: 0.73em;
@@ -43,7 +48,7 @@ h2 {
 
 h3 {
     padding: 6px 12px;
-    width: calc(100% - 30px);
+    width: $h3-width;
     background-color: color.$h3-background-color;
     color: color.$h3-text-color;
     border-radius: 20px;
@@ -60,11 +65,10 @@ h4 {
 .main-container {
     margin: 0 auto 4em auto;
     width: fit-content;
-    //border: 2px solid red;
 
     .container {
-        max-width: 800px;
-        margin: 0 0 0 30px;
+        max-width: $base-container-max-width;
+        margin: $base-container-margin;
 
         .container {
             margin: unset;
